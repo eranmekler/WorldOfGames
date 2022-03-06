@@ -15,41 +15,27 @@ def load_game():
         print("The error is... " + str(e.__class__) + "\nPlease enter a number.")
 
     if game == 1:
-        from MemoryGame import play
+        from src.MemoryGame import play
         if play(difficulty) == True:
-            from Score import add_score
+            from src.Score import add_score
             add_score(difficulty)
             print('\nYou won! ')
         else:
             print('\nYou lose! Try again! ')
     elif game == 2:
-        from GuessGame import play
+        from src.GuessGame import play
         if play(difficulty) == True:
-            from Score import add_score
+            from src.Score import add_score
             add_score(difficulty)
             print('\nYou won! ')
         else:
             print('\nYou lose! Try again! ')
     elif game == 3:
-        from CurrencyRouletteGame import play
+        from src.CurrencyRouletteGame import play
         if play(difficulty) == True:
-            from Score import add_score
+            from src.Score import add_score
             add_score(difficulty)
             print('\nYou won! ')
         else:
             print('\nYou lose! Try again! ')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

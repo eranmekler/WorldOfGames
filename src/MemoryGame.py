@@ -1,7 +1,7 @@
 import random
 import os
 from time import sleep
-from Utils import cls
+from src.Utils import cls
 
 
 def generate_sequence(difficulty):
@@ -29,7 +29,3 @@ def is_list_equal(difficulty):
 
 def play(difficulty):
     return is_list_equal(difficulty)
-
-
-
-

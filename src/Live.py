@@ -38,4 +38,3 @@ def load_game():
             print('\nYou won! ')
         else:
             print('\nYou lose! Try again! ')
-

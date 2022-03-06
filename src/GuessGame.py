@@ -29,4 +29,3 @@ def play(difficulty):
     else:
         result = False
     return result
-

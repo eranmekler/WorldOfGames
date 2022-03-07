@@ -1,6 +1,6 @@
 import os
 
-SCORES_FILE_NAME ="Scores.txt"
+SCORES_FILE_NAME ="src/Scores.txt"
 BAD_RETURN_CODE = -1
 
 def cls():

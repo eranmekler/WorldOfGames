@@ -15,6 +15,7 @@ services:
     image: selenium/hub:latest
     ports:
       - "4444:4444"
+      - "4443:4443"
     networks:
       - my_app
 
@@ -22,7 +23,6 @@ services:
     container_name: selenium-chrome-node
     image: selenium/node-chrome:latest
     shm_size: 2gb
-    expose: 5000:5900
     depends_on:
       - selenium-hub
     environment:

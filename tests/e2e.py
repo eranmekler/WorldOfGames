@@ -1,5 +1,5 @@
 from selenium import webdriver
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+#from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -7,9 +7,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
 def test_scores_service(app_url):
+    chrome_options = webdriver.ChromeOptions()
     driver = webdriver.Remote(
         command_executor='http://selenium-hub:4444/wd/hub',
-        desired_capabilities=DesiredCapabilities.CHROME)
+        options=chrome_options
+    )
 
     try:
         driver.get(app_url)

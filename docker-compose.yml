@@ -30,4 +30,8 @@ services:
     networks:
       - my_app
 
+networks:
+  my_app:
+    driver: bridge
+
 

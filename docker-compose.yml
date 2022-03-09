@@ -1,13 +1,13 @@
 version: '3'
 
 services:
-  web:
-    container_name: wog
-    build: .
+  selenium-hub:
+    image: selenium/hub:4.1.2-20220217
+    container_name: selenium-hub
     ports:
-      - "8777:5000"
-    environment:
-      - SE_EVENT_BUS_HOST=chrome
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
 
   chrome:
     image: selenium/node-chrome:4.1.2-20220217
@@ -19,10 +19,8 @@ services:
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
 
-  selenium-hub:
-    image: selenium/hub:4.1.2-20220217
-    container_name: selenium-hub
+  web:
+    container_name: wog
+    build: .
     ports:
-      - "4442:4442"
-      - "4443:4443"
-      - "4444:4444"
+      - "8777:5000"

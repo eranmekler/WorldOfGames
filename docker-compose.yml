@@ -8,6 +8,7 @@ services:
       - "4442:4442"
       - "4443:4443"
       - "4444:4444"
+      - "5000:5000"
 
   chrome:
     image: selenium/node-chrome:4.1.2-20220217

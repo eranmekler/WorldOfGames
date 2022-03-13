@@ -23,4 +23,4 @@ services:
     container_name: wog
     build: .
     ports:
-      - "5000:4444"
+      - "5000"

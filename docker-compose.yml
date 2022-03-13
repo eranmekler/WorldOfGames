@@ -8,7 +8,6 @@ services:
       - "4442:4442"
       - "4443:4443"
       - "4444:4444"
-    network_mode: "host
 
   chrome:
     image: selenium/node-chrome:4.1.2-20220217
@@ -19,11 +18,8 @@ services:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-    network_mode: "host
 
   web:
     container_name: wog
     build: .
-    ports:
-      - "8777:5000"
-    network_mode: "host
+    network_mode: "host"

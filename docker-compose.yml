@@ -8,7 +8,6 @@ services:
       - "4442:4442"
       - "4443:4443"
       - "4444:4444"
-      - "5000:5000"
 
   chrome:
     image: selenium/node-chrome:4.1.2-20220217
@@ -23,7 +22,5 @@ services:
   web:
     container_name: wog
     build: .
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    ports:
+      - "5000:4444"

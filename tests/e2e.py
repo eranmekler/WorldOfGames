@@ -8,7 +8,7 @@ from time import sleep
 def test_scores_service(app_url):
     chrome_options = webdriver.ChromeOptions()
     driver = webdriver.Remote(
-        command_executor='http://localhost:4443/wd/hub',
+        command_executor='http://localhost:4442/wd/hub',
         options=chrome_options
     )
 

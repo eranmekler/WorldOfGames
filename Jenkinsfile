@@ -4,24 +4,32 @@ pipeline {
         pollSCM '*/5 * * * *'
     }
     stages {
+        stage('Checkout') {
+            steps {
+                git "https://github.com/eranmekler/WorldOfGames.git"
+            }
         stage('Build') {
             steps {
-                // One or more steps need to be included within the steps block.
+                sh "docker-compose build"
             }
         }
         stage('Run') {
             steps {
-                // One or more steps need to be included within the steps block.
+                sh "docker-compose run -d"
             }
         }
         stage('Test') {
             steps {
-                // One or more steps need to be included within the steps block.
+                sh "docker exec -it wog python tests/e2e.py"
             }
         }
         stage('Finalize') {
             steps {
-                // One or more steps need to be included within the steps block.
+                withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_ID')]) {
+                    sh 'docker login -u $DOCKER_ID -p $DOCKER_PASSWORD'
+                    sh 'docker push eranmekler/world_of_games:latest'
+                }
+                sh 'docker-compose down;docker rmi $(docker images -q)'
             }
         }
     }

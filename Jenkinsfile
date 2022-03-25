@@ -8,6 +8,7 @@ pipeline {
             steps {
                 git "https://github.com/eranmekler/WorldOfGames.git"
             }
+        }
         stage('Build') {
             steps {
                 sh "docker-compose build"

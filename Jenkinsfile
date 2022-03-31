@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git "https://github.com/eranmekler/WorldOfGames.git"
+                scm checkout
             }
         }
         stage('Build') {

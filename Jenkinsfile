@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh "sudo docker exec -it wog python tests/e2e.py"
+                sh "sudo docker exec wog python tests/e2e.py"
             }
         }
         stage('Finalize') {

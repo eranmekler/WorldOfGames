@@ -30,7 +30,7 @@ pipeline {
                     sh 'sudo docker login -u $DOCKER_ID -p $DOCKER_PASSWORD'
                     sh 'sudo docker push eranmekler/world_of_games:latest'
                 }
-                sh 'sudo docker-compose down;docker rmi $(docker images -q)'
+                sh 'sudo docker-compose down;sudo docker rmi $(sudo docker images -q)'
             }
         }
     }

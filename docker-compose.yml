@@ -1,6 +1,15 @@
 version: '3'
 
 services:
+  web:
+    container_name: wog
+    image: eranmekler/world_of_games:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+
   selenium-hub:
     image: selenium/hub:4.1.2-20220217
     container_name: selenium-hub
@@ -19,11 +28,3 @@ services:
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
 
-  web:
-    container_name: wog
-    image: eranmekler/world_of_games:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "5000:5000"

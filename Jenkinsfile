@@ -11,28 +11,28 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh "sudo docker-compose build"
+                sh "docker-compose build"
             }
         }
         stage('Run') {
             steps {
-                sh "sudo docker-compose up -d"
+                sh "docker-compose up -d"
             }
         }
         stage('Test') {
             steps {
                 retry(3) {
-                sh "sudo docker exec wog python tests/e2e.py"
+                sh "docker exec wog python tests/e2e.py"
                 }
             }
         }
         stage('Finalize') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_ID')]) {
-                    sh 'sudo docker login -u $DOCKER_ID -p $DOCKER_PASSWORD'
-                    sh 'sudo docker push eranmekler/world_of_games:latest'
+                    sh 'docker login -u $DOCKER_ID -p $DOCKER_PASSWORD'
+                    sh 'docker push eranmekler/world_of_games:latest'
                 }
-                sh 'sudo docker-compose down;sudo docker rmi $(sudo docker images -q)'
+                sh 'docker-compose down;docker rmi $(docker images -q)'
             }
         }
     }
